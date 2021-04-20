@@ -1,13 +1,17 @@
+use itertools::Itertools;
+
 fn main() -> anyhow::Result<()>{
-    let mut input_iter = include_str!("input.txt")
+    let (a, b) = include_str!("input.txt")
         .split('\n')
         .map(str::parse::<i64>)
-        .map(Result::unwrap);
-    dbg!(input_iter.next());
+        .collect::<Result<Vec<_>,_>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b)| a + b == 2020)
+        .expect("no pair");
+
+    dbg!(a+b);
+    dbg!(a*b);
 
     Ok(())
-}
-
-fn find_pair_2020(numbers : Vec<i64>) -> Option<(i64, i64)> {
-    todo!()
 }
