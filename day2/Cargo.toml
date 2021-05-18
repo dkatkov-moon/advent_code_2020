@@ -8,4 +8,5 @@ edition = "2018"
 
 [dependencies]
 anyhow = "1.0.40"
+peg = "0.7.0"
 thiserror = "1.0.24"
